@@ -1,0 +1,28 @@
+// This is a partial file, as defined by the leading underscore.
+// They are useful for breaking your CSS/SASS into smaller and more manageable pieces.
+// They can be loaded as modules into other partials or non-partial/main scss files using the @use rule (also @import, which will become deprecated by end of 2022), making the content in them accessible to those files.
+// By breaking up the files, people can easily work on different parts of the site at the same time.
+// Or you can have specific partials to define repeatedly used elements such as buttons that need to stay consistent throughout the project.
+
+// This file, for example, only contains variables.
+// This can be useful to keep the color-scheme of a website or the fonts consistent throughout the site.
+// Variables allow me to change something in one place and it gets changed throughout the project whereever that variable is used.
+// Do we want to change the color scheme? Easy. Change it in the variable, rather than having to go through the entire project, changing it everywhere.
+
+// Colors
+
+$primary-color: #F26A8D;
+$secondary-color: #CC3A5D;
+$dark-color: #71192B;
+$light-color: #FFEDDF;
+$accent-color: #084C61;
+
+// Fonts
+
+$main-font: 'Cabin', sans-serif;
+$nav-font: 'Bebas Neue', sans-serif;
+
+// Media query breaks
+
+$break-small: 375px;
+$break-large: 1200px;

@@ -1,0 +1,102 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Cabin", sans-serif;
+  height: 100vh;
+  width: 100vw;
+}
+
+.background {
+  position: absolute;
+  background-color: #F26A8D;
+  height: 100%;
+  width: 100%;
+  z-index: -99;
+}
+.background__svg {
+  position: relative;
+  fill: #CC3A5D;
+  height: 100%;
+  width: 100%;
+}
+
+.main, .container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  height: 100%;
+  width: 100%;
+  z-index: 10;
+}
+.container__inner {
+  width: 50%;
+  padding: 1%;
+  background-color: #FFEDDF;
+}
+@media screen and (max-width: 375px) {
+  .container__inner {
+    width: 80%;
+  }
+}
+
+.nav {
+  width: 100%;
+  font-family: "Bebas Neue", sans-serif;
+}
+.nav__list {
+  width: 100%;
+  padding-top: 0.25em;
+  padding-bottom: 0.25em;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  list-style: none;
+}
+.nav__item {
+  padding-bottom: 0.25em;
+  padding-top: 0.25em;
+  text-align: center;
+}
+.nav__item a {
+  text-decoration: none;
+  color: #084C61;
+}
+.nav__item a:hover {
+  color: #F26A8D;
+}
+
+.main {
+  flex-flow: column;
+  padding: 0.25em;
+  color: #71192B;
+}
+.main__text {
+  margin-bottom: 2vh;
+}
+.main__text b {
+  font-weight: 700;
+  color: #CC3A5D;
+}
+.main__text a {
+  color: #084C61;
+}
+.main__text a:hover {
+  color: #F26A8D;
+}
+.main__img:hover {
+  -webkit-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}
+
+/* While multi line comments such as this one are.
+You should find this comment at the very end of the style.css file */
+
+/*# sourceMappingURL=style.css.map */

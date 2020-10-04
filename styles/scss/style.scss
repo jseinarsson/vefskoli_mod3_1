@@ -1,0 +1,10 @@
+@use 'background';
+@use 'main';
+
+// This file "style.scss" is the one I translated into css.
+// I can load the partials (scss files denoted with an _underscore at the front of the file name) into this file to tell Sass to translate their content into CSS.
+// Check out _main.scss and _variables.scss for explanations of the other features used.
+
+// BTW –– Single line comments like this are not translated into the css file.
+/* While multi line comments such as this one are.
+You should find this comment at the very end of the style.css file */

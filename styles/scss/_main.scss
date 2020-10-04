@@ -1,0 +1,117 @@
+@use 'variables' as var;
+// The @use loads the information in the partial as a module so that I can use it in this document.
+// In this case I loaded the partial _variables.scss which contains my variables.
+// When I loaded it with the @use rule I gave it the namespace 'var' so that I do not need to type out variables.[feature] when I want to use it's features.
+
+%flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+};
+// This is a placeholder class. It does nothing on it's own, but can be extended into selectors.
+// This can be useful for properties that are used repeatedly. In this case we define the informaton needed to create a centered flex and will use it twice later in the code, saving us time.
+
+@mixin transform($property) {
+    -webkit-transform: $property;
+    -ms-transform: $property;
+    transform: $property;
+}
+// This is a mixin, you can think of it sort of like a function in JS.
+// Mixins are great for repeated code, or like, in this cas, where you need to write the properties differently for some browsers.
+// Here, for example, we create a mixin called "transform" and we can pass in a property when we use the mixin, making it very flexible.
+// When the mixin is used, it will write the code above with the passed in property instead of $property.
+
+.container {
+    @extend %flex-center;
+    // First instance of extending the %flex-center placeholder. One line of code instead of three.
+    height: 100%;
+    width: 100%;
+    z-index: 10;
+    
+    // Below are some nested selectors that can help keep the code clean and readable.
+    &__inner {
+        // This is an example of how nested selectors can be great to use with BEM for example.
+        // In the CSS code, &__inner nested within this .container selector will be translated to .container__inner
+        // The & in front of "__inner" tells Sass that this selector should inherit the name of the selector it is nested in.
+        width: 50%;
+        padding: 1%;
+        background-color: var.$light-color;
+        
+        // This is a selector nested within a nested selector.
+        // Nesting is useful for media queries, to keep them close to the properties they are altering.
+        @media screen and (max-width: var.$break-small) {
+            width: 80%;
+        }
+    }
+}
+
+.nav {
+    width: 100%;
+    font-family: var.$nav-font;
+    // Here, font-family calls on a variable defined in the '_variables.scss' file.
+    // The syntax tells sass that it should look for the variable $nav.font in the module 'var' which as you know from the beginning of this file is the namespace for the module 'variables'
+
+    &__list {
+        width: 100%;
+        padding-top: 0.25em;
+        padding-bottom: 0.25em;
+
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: space-around;
+
+        list-style: none;
+    }
+
+    &__item {
+        padding-bottom: 0.25em;
+        padding-top: 0.25em;
+        text-align: center;
+
+        // Double nested selector that prints in CSS as ".nav__item a", targeting the <a href...> in the HTML.
+        a {
+            text-decoration: none;
+            color: var.$accent-color;
+
+            // Triple nested selector that print in CSS as ".nav__item a:hover"
+            // The & here refers to the selector that this is nested within, so the a, rather than the selectors above that "&__item" or ".nav"
+            &:hover {
+                color: var.$primary-color;
+            }
+        }
+    }
+}
+
+.main {
+    @extend %flex-center;
+    flex-flow: column;
+    // Second instance of extending the %flex-center placeholder.
+    // In this instance we add an additional flex property that isn't defined in the placeholder.
+    padding: 0.25em;
+    color: var.$dark-color;
+
+    &__text {
+        margin-bottom: 2vh;
+        b {
+            font-weight: 700;
+            color: var.$secondary-color;
+        }
+
+        a {
+            color: var.$accent-color;
+
+            &:hover {
+                color: var.$primary-color;
+            }
+        }
+    }
+
+    &__img {
+
+        &:hover {
+            @include transform(rotate(-45deg));
+            // Using the mixin "transform", passing in "rotate(-45deg)" as the $property value.
+            // Could replace "rotate(-45deg)" with any other transform property value.
+        }
+    }
+}
